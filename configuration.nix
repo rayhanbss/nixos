@@ -89,12 +89,21 @@
       btw = "echo This is NixOS, btw!";
     };
 
+    ohMyZsh = {
+      enable = true;
+      plugins = [
+        "git"
+      ];
+      theme = "robbyrussell";
+    };
+
     histSize = 10000;
     histFile = "$HOME/.zsh_history";
     setOptions = [ "HIST_IGNORE_ALL_DUPS"];
   };
 
   services.gnome.core-apps.enable = false;
+  services.gnome.excludePackages = with pkgs; [ nixos-render-docs gnome-tour ];
   services.xserver.excludePackages = with pkgs; [ xterm ];
   
   nixpkgs.config.allowUnfree = true;
