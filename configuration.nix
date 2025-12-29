@@ -95,7 +95,7 @@
   };
 
   services.gnome.core-apps.enable = false;
-  services.xserver.desktopManager.xterm.enable = false;
+  services.xserver.excludePackages = with pkgs; [ xterm ];
   
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
