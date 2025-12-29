@@ -32,9 +32,6 @@
     variant = "";
   };
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -95,6 +92,10 @@
     histSize = 10000;
     histFile = "$HOME/.zsh_history";
     setOptions = [ "HIST_IGNORE_ALL_DUPS"];
+  };
+
+  programs.alacritty = {
+    enable = true;
   };
 
   services.gnome.core-apps.enable = false;
