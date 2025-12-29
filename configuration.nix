@@ -94,10 +94,6 @@
     setOptions = [ "HIST_IGNORE_ALL_DUPS"];
   };
 
-  programs.alacritty = {
-    enable = true;
-  };
-
   services.gnome.core-apps.enable = false;
   services.xserver.desktopManager.xterm.enable = false;
   
@@ -107,6 +103,7 @@
     wget
     nixd
     brave
+    alacritty
   ];
 
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
