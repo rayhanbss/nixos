@@ -1,9 +1,23 @@
-{ config, pkgs, ... }:
+{ config, pkgs, ... }: 
+
+let 
+  createSymlink = path: config.lib.mkOutOfStoreSymlink path;
+  dotfilesDirectory = "${config.home.homeDirectory}/nixos/dotfiles";
+  dotfiles = {
+    alacritty = "alacritty";
+  };
+in 
+
 
 {
   home.username = "hann";
   home.homeDirectory = "/home/hann";
   home.stateVersion = "25.11";
+
+  xdg.configFile = builtins.mapAttrs ( name: subpath: {
+    source = createSymlink "${dotfilesDirectory}/${subpath}";
+    recursive = true;
+  }) dotfiles;
 
   programs.zsh = {
     enable = true;
@@ -27,6 +41,28 @@
       size = 10000;
       ignoreAllDups = true;
       path = "$HOME/.zsh_history";
+    };
+  };
+
+  programs.git = {
+    enable = true;
+    settings = {
+      user = {
+        name = "Rayhan Bagus Sadewa";
+        email = "masbaguss001@gmail.com";
+      };
+      init.defaultBranch = "main";
+    };
+  };
+
+  programs.vscode = {
+    enable = true;
+    profiles = {
+      default = {
+        extensions = with pkgs.vscode-extensions; [
+          jnoortheen.nix-ide
+        ];
+      };
     };
   };
 }

@@ -1,16 +1,19 @@
-{ config, pkgs, inputs, ... }:
-
 {
+  config,
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
   ];
 
   boot.loader = {
-    systemd-boot.enable = false; 
+    systemd-boot.enable = false;
     efi.canTouchEfiVariables = true;
     grub = {
       enable = true;
-      devices = [ "nodev" ];
+      devices = ["nodev"];
       efiSupport = true;
       useOSProber = true;
     };
@@ -41,50 +44,36 @@
     isNormalUser = true;
     description = "hann";
     shell = pkgs.zsh;
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
   };
 
   programs.zsh.enable = true;
-  programs.git = {
-    enable = true;
-    config = {
-      user = {
-        name = "Rayhan Bagus Sadewa";
-        email = "masbaguss001@gmail.com";
-      };
-      init.defaultBranch = "main";
-    };
-  };
-
-  programs.vscode = {
-    enable = true;
-    defaultEditor = true;
-    extensions = with pkgs.vscode-extensions; [ jnoortheen.nix-ide ];
-  };
+  programs.vscode.enable = true;
+  programs.git.enable = true;
 
   services.gnome.core-apps.enable = false;
-  environment.gnome.excludePackages = with pkgs; [ nixos-render-docs gnome-tour ];
+  environment.gnome.excludePackages = with pkgs; [nixos-render-docs gnome-tour];
   documentation.nixos.enable = false;
-  services.xserver.excludePackages = with pkgs; [ xterm ];
-  
+  services.xserver.excludePackages = with pkgs; [xterm];
+
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
-    vim 
+    vim
     wget
     nixd
+    alejandra
     brave
     alacritty
   ];
 
-  fonts= {
-    
-    packages = with pkgs;[
+  fonts = {
+    packages = with pkgs; [
       nerd-fonts.jetbrains-mono
       noto-fonts-cjk-sans
     ];
   };
 
-  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+  nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
 
   system.stateVersion = "25.11";
 }
