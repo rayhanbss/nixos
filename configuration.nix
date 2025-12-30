@@ -6,7 +6,7 @@
   ];
 
   boot.loader = {
-    boot.loader.systemd-boot.enable = false; 
+    systemd-boot.enable = false; 
     efi.canTouchEfiVariables = true;
     grub = {
       enable = true;
