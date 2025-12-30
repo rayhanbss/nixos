@@ -50,6 +50,7 @@
   programs.zsh.enable = true;
   programs.vscode.enable = true;
   programs.git.enable = true;
+  programs.niri.enable = true;
 
   services.gnome.core-apps.enable = false;
   environment.gnome.excludePackages = with pkgs; [nixos-render-docs gnome-tour];

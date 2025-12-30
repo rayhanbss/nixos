@@ -61,6 +61,8 @@ in
       default = {
         extensions = with pkgs.vscode-extensions; [
           jnoortheen.nix-ide
+          tamasfe.even-better-toml
+          pkief.material-icon-theme
         ];
       };
     };
