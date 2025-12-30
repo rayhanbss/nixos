@@ -1,5 +1,4 @@
 {
-
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     home-manager = {
@@ -8,7 +7,12 @@
     };
   };
 
-  outputs = inputs@{self, nixpkgs, home-manager, ... }: {
+  outputs = inputs @ {
+    self,
+    nixpkgs,
+    home-manager,
+    ...
+  }: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
 
@@ -17,9 +21,9 @@
       };
 
       modules = [
-        { nix.settings.experimental-features = [ "nix-command" "flakes" ]; }
+        {nix.settings.experimental-features = ["nix-command" "flakes"];}
         ./configuration.nix
-        home-manager.nixosModules.home-manager 
+        home-manager.nixosModules.home-manager
         {
           home-manager = {
             useGlobalPkgs = true;
@@ -31,5 +35,4 @@
       ];
     };
   };
-
 }
