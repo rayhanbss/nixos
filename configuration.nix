@@ -42,11 +42,9 @@
     description = "hann";
     shell = pkgs.zsh;
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-    #  thunderbird
-    ];
   };
 
+  programs.zsh.enable = true;
   programs.git = {
     enable = true;
     config = {
@@ -62,29 +60,6 @@
     enable = true;
     defaultEditor = true;
     extensions = with pkgs.vscode-extensions; [ jnoortheen.nix-ide ];
-  };
-
-  programs.zsh = {
-    enable = true;
-    autosuggestions.enable = true;
-    enableCompletion = true;
-    syntaxHighlighting.enable = true;
-
-    shellAliases = {
-      btw = "echo This is NixOS, btw!";
-    };
-
-    ohMyZsh = {
-      enable = true;
-      plugins = [
-        "git"
-      ];
-      theme = "robbyrussell";
-    };
-
-    histSize = 10000;
-    histFile = "$HOME/.zsh_history";
-    setOptions = [ "HIST_IGNORE_ALL_DUPS"];
   };
 
   services.gnome.core-apps.enable = false;
