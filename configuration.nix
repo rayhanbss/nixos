@@ -72,6 +72,7 @@
     vim 
     wget
     nixd
+    alejandra
     brave
     alacritty
   ];
