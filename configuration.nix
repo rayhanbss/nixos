@@ -89,6 +89,7 @@
 
   services.gnome.core-apps.enable = false;
   environment.gnome.excludePackages = with pkgs; [ nixos-render-docs gnome-tour ];
+  documentation.nixos.enable = false;
   services.xserver.excludePackages = with pkgs; [ xterm ];
   
   nixpkgs.config.allowUnfree = true;
