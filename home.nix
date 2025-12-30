@@ -1,7 +1,7 @@
 { config, pkgs, ... }: 
 
 let 
-  createSymlink = path: config.lib.mkOutOfStoreSymlink path;
+  createSymlink = path: config.lib.file.mkOutOfStoreSymlink path;
   dotfilesDirectory = "${config.home.homeDirectory}/nixos/dotfiles";
   dotfiles = {
     alacritty = "alacritty";
