@@ -47,15 +47,20 @@
     extraGroups = ["networkmanager" "wheel"];
   };
 
+  security.polkit.enable = true;
+  security.pam.service.swaylock = {};
+
   programs.zsh.enable = true;
   programs.vscode.enable = true;
   programs.git.enable = true;
   programs.niri.enable = true;
 
   services.gnome.core-apps.enable = false;
+  service.gnome.gnome-keyring.enable = true;
+  services.xserver.excludePackages = with pkgs; [xterm];
+
   environment.gnome.excludePackages = with pkgs; [nixos-render-docs gnome-tour];
   documentation.nixos.enable = false;
-  services.xserver.excludePackages = with pkgs; [xterm];
 
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
@@ -65,6 +70,14 @@
     alejandra
     brave
     alacritty
+    rofi
+    nautilus
+    baobab
+    xwayland-satellite
+    stow
+    swww
+    mako
+    swayidle
   ];
 
   fonts = {
