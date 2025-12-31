@@ -69,8 +69,11 @@
   environment.systemPackages = with pkgs; [
     alacritty
     alejandra
+    ani-cli
     baobab
+    betterdiscordctl
     brave
+    discord
     mako
     nautilus
     nixd
