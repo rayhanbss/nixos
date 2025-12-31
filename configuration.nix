@@ -48,7 +48,7 @@
   };
 
   security.polkit.enable = true;
-  security.pam.service.swaylock = {};
+  security.pam.services.swaylock = {};
 
   programs.zsh.enable = true;
   programs.vscode.enable = true;
@@ -64,20 +64,20 @@
 
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
+    alacritty
+    alejandra
+    baobab
+    brave
+    mako
+    nautilus
+    nixd
+    rofi
+    stow
+    swayidle
+    swww
     vim
     wget
-    nixd
-    alejandra
-    brave
-    alacritty
-    rofi
-    nautilus
-    baobab
     xwayland-satellite
-    stow
-    swww
-    mako
-    swayidle
   ];
 
   fonts = {
