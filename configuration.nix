@@ -56,7 +56,7 @@
   programs.niri.enable = true;
 
   services.gnome.core-apps.enable = false;
-  service.gnome.gnome-keyring.enable = true;
+  services.gnome.gnome-keyring.enable = true;
   services.xserver.excludePackages = with pkgs; [xterm];
 
   environment.gnome.excludePackages = with pkgs; [nixos-render-docs gnome-tour];
