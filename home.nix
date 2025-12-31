@@ -6,6 +6,7 @@ let
   dotfiles = {
     alacritty = "alacritty";
     niri = "niri";
+    rofi = "rofi";
   };
 in 
 
@@ -15,37 +16,10 @@ in
   home.homeDirectory = "/home/hann";
   home.stateVersion = "25.11";
 
-  systemd.user.services= { 
-    polkit-gnome = {
-      Unit = {
-        Description = "polkit-gnome authentication agent";
-        PartOf = [ "graphical-session.target" ];
-      };
-      Service = {
-        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-        Restart = "on-failure";
-      };
-      Install = {
-        WantedBy = [ "graphical-session.target" ];
-      };
-    };
-    swww = {
-      Unit = {
-        Description = "swww wallpaper daemon";
-        PartOf = [ "graphical-session.target" ];
-      };
-
-      Service = {
-        ExecStart = "${pkgs.swww}/bin/swww-daemon";
-        Restart = "on-failure";
-      };
-
-      Install = {
-        WantedBy = [ "graphical-session.target" ];
-      };
-    };
+  services  = {
+    polkit-gnome.enable = true;
+    swww.enable = true;
   };
-
 
   xdg.configFile = builtins.mapAttrs ( name: subpath: {
     source = createSymlink "${dotfilesDirectory}/${subpath}";
