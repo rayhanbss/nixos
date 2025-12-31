@@ -5,6 +5,7 @@ let
   dotfilesDirectory = "${config.home.homeDirectory}/nixos/dotfiles";
   dotfiles = {
     alacritty = "alacritty";
+    niri = "niri";
   };
 in 
 

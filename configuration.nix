@@ -72,7 +72,6 @@
     nautilus
     nixd
     rofi
-    stow
     swayidle
     swww
     vim
