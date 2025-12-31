@@ -76,6 +76,7 @@
     nixd
     polkit_gnome
     rofi
+    seahorse
     swayidle
     swww
     vim
