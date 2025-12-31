@@ -20,16 +20,18 @@
   };
 
   networking.hostName = "nixos";
-
   networking.networkmanager.enable = true;
 
   time.timeZone = "Asia/Jakarta";
-
   i18n.defaultLocale = "en_US.UTF-8";
 
-  services.xserver.enable = true;
-  services.displayManager.gdm.enable = true;
-  services.desktopManager.gnome.enable = true;
+  services.displayManager.ly = {
+    enable = true;
+    settings = {
+      animation = "matrix";
+      waylandsessions = "${pkgs.niri}/share/wayland-sessions";
+    };
+  };
 
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -47,6 +49,12 @@
     extraGroups = ["networkmanager" "wheel"];
   };
 
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gnome ];
+    config.common.default = "*";
+  };
+
   security.polkit.enable = true;
   security.pam.services.swaylock = {};
 
@@ -55,11 +63,6 @@
   programs.git.enable = true;
   programs.niri.enable = true;
 
-  services.gnome.core-apps.enable = false;
-  services.gnome.gnome-keyring.enable = true;
-  services.xserver.excludePackages = with pkgs; [xterm];
-
-  environment.gnome.excludePackages = with pkgs; [nixos-render-docs gnome-tour];
   documentation.nixos.enable = false;
 
   nixpkgs.config.allowUnfree = true;
@@ -71,6 +74,7 @@
     mako
     nautilus
     nixd
+    polkit_gnome
     rofi
     swayidle
     swww
