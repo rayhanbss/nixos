@@ -1,11 +1,11 @@
 configuration {
 	modi: "run,drun";
-  show-icons: true;
-  display-drun: "";
-  display-run: "";
-  font: "JetBrainsMono Nerd Font Propo 12";
-	drun-display-format: "{name} [<span weight='light' size='small'><i>({generic})</i></span>]";
-	window-format: "{w} · {c} · {t}";
+    show-icons: true;
+    display-drun: "";
+    display-run: "";
+    font: "JetBrainsMono Nerd Font Propo 12";
+    drun-display-format:  "{icons} {name}";
+    window-format: "{w} · {c} · {t}";
 }
 
 @import "color.rasi"

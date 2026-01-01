@@ -7,6 +7,7 @@ let
     alacritty = "alacritty";
     niri = "niri";
     rofi = "rofi";
+    quickshell = "quickshell";
   };
 in 
 

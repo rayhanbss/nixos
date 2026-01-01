@@ -42,6 +42,9 @@
     pulse.enable = true;
   };
 
+  services.gnome.gnome-keyring.enable = true;
+  services.dbus.enable = true;
+
   users.users.hann = {
     isNormalUser = true;
     description = "hann";
@@ -56,7 +59,10 @@
   };
 
   security.polkit.enable = true;
+  
   security.pam.services.swaylock = {};
+  security.pam.services.login.enableGnomeKeyring = true;
+  security.pam.services.ly.enableGnomeKeyring = true;
 
   programs.zsh.enable = true;
   programs.vscode.enable = true;
@@ -74,10 +80,12 @@
     betterdiscordctl
     brave
     discord
+    libsecret
     mako
     nautilus
     nixd
     polkit_gnome
+    quickshell
     rofi
     seahorse
     swayidle

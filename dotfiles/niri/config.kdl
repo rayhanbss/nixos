@@ -93,7 +93,7 @@ cursor {
     hide-after-inactive-ms 1000
 }
 
-spawn-at-startup "waybar"
+spawn-at-startup "swww-daemon"
 spawn-sh-at-startup "swww img ~/Pictures/Wallpapers/metaphor.jpg"
 
 hotkey-overlay {
