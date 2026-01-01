@@ -125,7 +125,7 @@ window-rule {
 }
 
 window-rule {
-    geometry-corner-radius 8
+    geometry-corner-radius 0
     draw-border-with-background false
     clip-to-geometry true
 }
@@ -142,7 +142,8 @@ binds {
     Mod+Return hotkey-overlay-title="Open a Terminal" { spawn "alacritty"; }
     Mod+Space hotkey-overlay-title="Run an Application" { spawn-sh "rofi -show drun || pkill rofi"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen" { spawn "swaylock"; }
-    Mod+E hotkey-overlay-title="Open file manager" { spawn "nautilus"; }
+    Mod+E hotkey-overlay-title="Open File Manager" { spawn "nautilus"; }
+    Mod+B hotkey-overlay-title="Open a Browser" { spawn "brave"; }
 
     XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }

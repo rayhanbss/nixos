@@ -88,6 +88,7 @@
     quickshell
     rofi
     seahorse
+    spotify
     swayidle
     swww
     vim

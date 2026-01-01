@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: 
+{ config, pkgs, inputs, ... }: 
 
 let 
   createSymlink = path: config.lib.file.mkOutOfStoreSymlink path;
@@ -13,6 +13,10 @@ in
 
 
 {
+  imports = [
+    inputs.spicetify-nix.homeManagerModules.default
+  ];
+
   home.username = "hann";
   home.homeDirectory = "/home/hann";
   home.stateVersion = "25.11";
@@ -74,5 +78,17 @@ in
         ];
       };
     };
+  };
+
+  programs.spicetify = let
+    spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+  in {
+    enable = true;
+    theme = spicePkgs.themes.text;
+    enabledExtensions = with spicePkgs.extensions; [
+      adblock
+      hidePodcasts
+      shuffle
+    ];
   };
 }
