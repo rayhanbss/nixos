@@ -9,13 +9,17 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    dms = {
+      url = "github:AvengeMedia/DankMaterialShell/stable";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
     self,
     nixpkgs,
     home-manager,
-    spicetify-nix,
+    dms,
     ...
   }: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {

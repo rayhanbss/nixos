@@ -2,6 +2,7 @@
   config,
   pkgs,
   inputs,
+  qml-niri,
   ...
 }: {
   imports = [
@@ -30,6 +31,8 @@
     settings = {
       animation = "matrix";
       waylandsessions = "${pkgs.niri}/share/wayland-sessions";
+      hide_version_string = true;
+      hide_key_hints = true;
     };
   };
 
@@ -44,6 +47,38 @@
 
   services.gnome.gnome-keyring.enable = true;
   services.dbus.enable = true;
+
+  services.kmscon = {
+    enable = true;
+    hwRender = true;
+    fonts = [{
+      name = "JetBrainsMono Nerd Font Mono";
+      package = pkgs.jetbrains-mono;
+    }];
+    extraConfig = ''
+      font-size=14
+      xkb-layout=us
+    '';
+  };
+
+  console.colors = [
+    "32344a"
+    "f7768e"
+    "9ece6a"
+    "e0af68"
+    "7aa2f7"
+    "ad8ee6"
+    "449dab"
+    "787c99"
+    "444b6a"
+    "ff7a93"
+    "b9f27c"
+    "ff9e64"
+    "7da6ff"
+    "bb9af7"
+    "0db9d7"
+    "acb0d0"
+  ]; 
 
   users.users.hann = {
     isNormalUser = true;
@@ -78,23 +113,33 @@
     ani-cli
     baobab
     betterdiscordctl
+    bibata-cursors
     brave
+    cava
+    cliphist
     discord
     libsecret
-    mako
+    matugen
     nautilus
+    nodejs
     nixd
     polkit_gnome
-    quickshell
-    rofi
+    qt6.qtbase
+    qt6.qtdeclarative
+    qt6.qtwayland
+    qt6.qtmultimedia
     seahorse
     spotify
-    swayidle
-    swww
     vim
     wget
+    wl-clipboard
     xwayland-satellite
   ];
+
+  environment.variables = {
+    XCURSOR_THEME = "bibata_cursors";
+    XCURSOR_SIZE = "24";
+  };
 
   fonts = {
     packages = with pkgs; [

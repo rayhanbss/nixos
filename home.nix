@@ -7,7 +7,6 @@ let
     alacritty = "alacritty";
     niri = "niri";
     rofi = "rofi";
-    quickshell = "quickshell";
   };
 in 
 
@@ -15,6 +14,7 @@ in
 {
   imports = [
     inputs.spicetify-nix.homeManagerModules.default
+    inputs.dms.homeModules.dankMaterialShell.default
   ];
 
   home.username = "hann";
@@ -23,13 +23,38 @@ in
 
   services  = {
     polkit-gnome.enable = true;
-    swww.enable = true;
   };
 
   xdg.configFile = builtins.mapAttrs ( name: subpath: {
     source = createSymlink "${dotfilesDirectory}/${subpath}";
     recursive = true;
   }) dotfiles;
+  
+  programs.dankMaterialShell = {
+    enable = true;
+
+    systemd = {
+      enable = true;
+      restartIfChanged = true;
+    };
+
+    enableClipboard = true;
+    enableVPN = true;
+    enableDynamicTheming = true;
+    enableAudioWavelength = true;
+    enableCalendarEvents = true;
+
+    plugins = {
+      DockerManager = {
+        src = pkgs.fetchFromGitHub {
+          owner = "LuckShiba";
+          repo = "DmsDockerManager";
+          rev = "v1.2.0";
+          sha256 = "sha256-VoJCaygWnKpv0s0pqTOmzZnPM922qPDMHk4EPcgVnaU=";
+        };
+      };
+    };
+  };
 
   programs.zsh = {
     enable = true;

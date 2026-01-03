@@ -49,13 +49,14 @@ layout {
     // `draw-border-with-background`.
 
     focus-ring {
-        width 1
+        off
+        width 2
         active-color "#7fc8ff"
         inactive-color "#505050"
     }
 
     border {
-        off
+        on
         width 2
         active-color "#7fc8ff"
         inactive-color "#878787"
@@ -91,6 +92,10 @@ cursor {
     hide-after-inactive-ms 1000
 }
 
+spawn-at-startup "swww-daemon"
+spawn-sh-at-startup "swww img ~/Pictures/Wallpapers/metaphor.jpg"
+spawn-sh-at-startup "qs -c yui"
+
 hotkey-overlay {
     skip-at-startup
 }
@@ -120,13 +125,13 @@ window-rule {
 }
 
 window-rule {
-    geometry-corner-radius 12
+    geometry-corner-radius 0
     draw-border-with-background false
     clip-to-geometry true
 }
 
 layer-rule {
-  match namespace="^quickshell*"
+  match namespace="^swww-daemon*"
   place-within-backdrop true
 }
 
@@ -292,4 +297,3 @@ binds {
 
     Mod+Shift+P { power-off-monitors; }
 }
-include "dms/binds.kdl"

@@ -18,6 +18,8 @@
 # I put the file alacritty.toml in $HOME/.config/alacritty. However it can be kept anywhere among the places mentioned in
 # https://github.com/alacritty/alacritty/tree/master#configuration
 
+general.import = [ "./dank-theme.toml" ]
+
 [window]
 
 opacity = 0.8
